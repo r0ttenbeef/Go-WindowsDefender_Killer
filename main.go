@@ -132,7 +132,7 @@ func disableDriversServices() {
 		"wscsvc"}                //Security Center
 
 	for i := range defenderDrvs {
-		regCurrentKey := regSvcPath + "\\" + defenderDrvs[i]
+		regCurrentKey := filepath.Join(regSvcPath, defenderDrvs[i])
 		openSvcKey, err := registry.OpenKey(registry.LOCAL_MACHINE, regCurrentKey, registry.ALL_ACCESS)
 		defer openSvcKey.Close()
 		if err != nil {
